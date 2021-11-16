@@ -2,15 +2,15 @@
 <html>
   <head>
     <title></title>
+    <script src="jquery.js"></script> 
+    <script> 
+    $(function(){
+      $("#table").load("table.html"); 
+    });
+    </script> 
   </head>
-  <style>
-    .table{
-      
-    }
-  </style>
   <body>
-    <div class = "table">
-      
+    <div id = "table">
     </div>
     <div class = "file">
       <button id = "file"> File </button>
@@ -35,4 +35,5 @@
       </a>
     </div>
   </body>
+  
 </html>
