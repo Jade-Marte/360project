@@ -8,7 +8,8 @@ def create_app(test_config=None):
         SECRET_KEY ='dev',
         DATABASE=os.path.join(app.instance_path,'flaskr.sqlite'),
     )
-
+    from . import db
+    db.init_app(app)
     if test_config is None:
          # load the instance config, if it exists, when not testing
         app.config.from_pyfile('config.py',silent=True)
@@ -23,8 +24,11 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    #a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello World'
-    return app
+    from . import auth
+    app.register_blueprint(auth.bp)
+
+    # #a simple page that says hello
+    # @app.route('/hello')
+    # def hello():
+    #     return 'Hello World'
+    # return app
