@@ -31,4 +31,7 @@ def create_app(test_config=None):
     # @app.route('/hello')
     # def hello():
     #     return 'Hello World'
+    from . import table
+    app.register_blueprint(table.bp)
+    app.add_url_rule('/',endpoint='index')
     return app

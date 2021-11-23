@@ -58,7 +58,7 @@ def login():
             session['user_id'] = user['id']
             return redirect(url_for('index'))
     
-    flash(error)
+        flash(error)
     return render_template('auth/login.html')
 
 @bp.before_app_request
