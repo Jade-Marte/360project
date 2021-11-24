@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %} Edit "{{ post['client_name']}}" {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label for="client_name">Client Name</label>
+        <input name="client_name" id="client" value="{{ request.form['client_name'] or post['client_name']}}" required>
+        <label for="employee_name">Employee Name</label>
+        <input type="text" name="employee_name" id="employee" value="{{ request.form['employee_name'] or post['employee_name']">
+        <label for="session">Session Time</label>
+        <input name="session" type="time" id="time" value="{{ request.form['session_time'] }} or post['session_time']">
+        <input type="submit" value="Save">
+    </form>
+    <hr>
+    <form action="{{ url_for('table.delete', id=post['id'])">
+        <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+    </form>
+{% endblock %}
