@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>Login</h1>
+    <h1>Log In</h1>
 {% endblock %}
 
 {% block body %}
+    <!-- {% if data %}
+        <h1>{{ data['name'] }}</h1>
+    {% else %}
+        <h1> Hello, World</h1>
+    {% endif %} -->
     <div class="content">
         <form>
             <label for='username'>Username:</label>
@@ -15,5 +20,9 @@
             <br>
             <input type='submit' value='Login'>
         </form>
+        <a id ="signin" href="signin.html"> Sign Up</a>
+        <a id = "fp" href=""> Forgot password</a>
+        <a id = "fu" href=""> Forgot username</a>
     </div>
+    <script src="{{url_for('static',filename='script.js')}}"></script>
 {% endblock %}

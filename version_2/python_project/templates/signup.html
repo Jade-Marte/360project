@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+    <h1>Sign In</h1>
+{% endblock %}
+
+{% block body %}
+    <form action='/signup'>
+        <label for="username">Create Username</label>
+        <input name="username" id = 'username' type='text'>
+        <label for='password'>Create password</label>
+        <input name='password' id='password' type='text'>
+        <label for='confirm'>Re-enter password</label>
+        <input name='confirm' type='text' id='confirm'>
+        <label for='type'>Employee or Manager</label>
+        <select id='type' name='type'>
+            <option value='employee'>Employee</option>
+            <option value='manager'>Manager</option>
+        </select>
+        <input type='submit' value='Sign Up'> 
+    </form>
+{% endblock %}
+
+
