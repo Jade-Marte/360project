@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>Settings</h1>
+{% endblock %}
+
+{% block body %}
+    <form action="setting.html">
+        <label for="change_pass">Change Password</label>
+        <input name="change_pass" id='change_pass' type="text">
+        <br>
+        <label for='confirm'>Re-enter password</label>
+        <input name='confirm' type="text" id='confirm'>
+        <br>
+        <label for="color">Change Color Scheme</label>
+        <select name="color" id='color'>
+            <option value='blue'>Blue</option>
+            <option value='green'>Green</option>
+            <option value='pink'>Pink</option>
+            <option value='white'>White</option>
+            <option value='black'>Black</option>
+        </select>
+        <br>
+        <label for='verification'>Verification</label>
+        <input type='checkbox' name='verification' id='verification' value='verification'>
+        
+    </form>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
