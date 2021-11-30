@@ -6,18 +6,26 @@
 {% endblock %}
 
 {% block body %}
-    <form action='/signup'>
+    <a id ='back'href="home.html">Log In</a>
+    <form action='/signup'methods=''>
+        <label for='name'>Enter Name</label>
+        <input name='name' id='name' type='text'>
+        <br>
         <label for="username">Create Username</label>
         <input name="username" id = 'username' type='text'>
+        <br>
         <label for='password'>Create password</label>
         <input name='password' id='password' type='text'>
+        <br>
         <label for='confirm'>Re-enter password</label>
         <input name='confirm' type='text' id='confirm'>
+        <br>
         <label for='type'>Employee or Manager</label>
         <select id='type' name='type'>
             <option value='employee'>Employee</option>
             <option value='manager'>Manager</option>
         </select>
+        <br>
         <input type='submit' value='Sign Up'> 
     </form>
 {% endblock %}
