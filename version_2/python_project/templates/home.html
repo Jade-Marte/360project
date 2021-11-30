@@ -11,7 +11,7 @@
         <h1> Hello, World</h1>
     {% endif %} -->
     <div class="content">
-        <form>
+        <form action='/home' method="POST">
             <label for='username'>Username:</label>
             <input type='text' name="username" id='username'>
             <br>
@@ -20,7 +20,7 @@
             <br>
             <input type='submit' value='Login'>
         </form>
-        <a id ="signin" href="{{}}"> Sign Up</a>
+        <a id ="signup" href="./Signup"> Sign Up</a>
         <a id = "fp" href=""> Forgot password</a>
         <a id = "fu" href=""> Forgot username</a>
     </div>

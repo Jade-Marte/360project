@@ -2,7 +2,7 @@
 
 
 {% block header %}
-
+    <link rel='stylesheet' href="{{url_for('static',filename='style.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -13,11 +13,20 @@
     {% endif %} -->
     <table class="manager">
          <!-- for loop for employee table grouped by manager_id -->
-        <tr>
-            <th></th>
+         <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Time_in</th>
+            <th>Time_out</th>
+            <th>Total hours</th>
         </tr>
+        {% for session in data %}
         <tr>
-            <td></td>
+            <td>{{session.name}}</td>
+            <td>{{session.date}}</td>
+            <td>{{session.time_in}}</td>
+            <td>{{session.time_out}}</td>
+            <td>{{session.total_hours}}</td>
         </tr>
     </table>
     <!-- end of for loop -->

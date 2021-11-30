@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1></h1>
+    <h1>Paystub</h1>
+    <link rel='stylesheet' href="{{url_for('static',filename='style.css')}}">
 {% endblock %}
 {% block body %}
      <!-- {% if data %}
@@ -12,16 +13,26 @@
     <table class='employee'>
         <!-- for loop to loop through the employee table 
                 joined be the sessions table-->
-        <tr>
-            <th></th>
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
         
+        <tr>
+            <th>Date</th>
+            <th>Time_in</th>
+            <th>Time_out</th>
+            <th>Total hours</th>
+        </tr>
+        {% for session in data %}
+        <tr>
+            <td>{{session.date}}</td>
+            <td>{{session.time_in}}</td>
+            <td>{{session.time_out}}</td>
+            <td>{{session.total_hours}}</td>
+        </tr>
+    {% endfor %}
     </table>
     <!-- end of for loop -->
     <a id ='import' herf="">Import</a>
+    <br>
     <a id='export' herf=''>Export</a>
+    <br>
     <a id='setting' herf=''>Settings</a>
 {% endblock %}

@@ -1,0 +1,12 @@
+.employee{
+    border: 2px black solid;
+}
+
+.employee td{
+    border: 1px black solid;
+    font-size: 14px;
+}
+
+/* .employee th{
+    font-size: ;
+} */
