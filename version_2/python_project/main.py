@@ -35,8 +35,10 @@ def home():
 @app.route('/Signin',methods=("POST","GET"))
 def Signin():
     mycursor = mydb.cursor()
-    mycursor.excute("")
-    users = []
+    if request.method == 'GET':
+        mycursor.excute("insert into employee"
+                    "values ")
+        users = []
     return render_template('signin.html',users = users)
 
 @app.route('/get_all_employee')
