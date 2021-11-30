@@ -22,7 +22,6 @@ def home():
         session.pop('user_id',None)
         username = request.form['username']
         password = request.form['password']
-        type = request.form['type']
 
         user = [x for x in users if x.username == username][0]
         if user and user.password == password:
