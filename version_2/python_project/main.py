@@ -18,7 +18,7 @@ def home():
     mycursor.execute("Select username,password,type,employee_id, manager_id From Employee")
     users = [dict((mycursor.description[i][0],value)\
                 for i,value in enumerate(row)) for row in mycursor.fetchall()]
-    print(users)
+    # print(users)
     if request.method == 'POST':
         session.pop('user_id',None)
         username = request.form['username']
@@ -79,20 +79,33 @@ def employee():
 def manager():
     manager_id = session['manager_id']
     employee_data = querydb(f"select * from employee where manager_id = {manager_id}")
-    employee_ids = []
-    for x in employee_data:
-        employee_ids.append(x['employee_id'])
-    session_data = querydb("select * from sessions where employee_id in (%s) order by employee_id"% (', '.join(str(id) for id in employee_ids)))
-    return render_template('manager.html')
+    employee_ids = [x['employee_id' ]for x in employee_data]
+    # get the indivdual manager from employee_data
+    manager_data = get_manager(employee_data)
+    data = {'manager_name':manager_data['name'],
+            'department': manager_data['department'],
+            'employee': employee_data}
+    return render_template('manager.html',data=data)
 @app.route('/get_all_employee')
 def get_employees():
     mycursor.execute("Select * FROM Employee")
-    r = [dict((mycursor.description[i][0], value) \
+    r = [dict((mycursor.description[i][0], value)
                for i, value in enumerate(row)) for row in mycursor.fetchall()]
     # mycursor.connection.close()
     return (r)
 
+@app.route('/sessions/<employee_id>')
+def get_sessions(employee_id):
+    session_data = querydb(f"select * from sessions where employee_id = {employee_id}")
+    return json.dumps(session_data)
 
+# get the indivdual manager from employee_data
+def get_manager(employee_data):
+    for employee in employee_data:
+        if employee['type'] == 'manager':
+            return employee
+
+    
 def querydb(sql):
     mycursor.execute(sql)
     r = [dict((mycursor.description[i][0], value) \

@@ -6,30 +6,18 @@
 {% endblock %}
 
 {% block body %}
-   <!-- {% if data %}
-        <h1>{{ data['name'] }}</h1>
-    {% else %}
-        <h1> Hello, Employee</h1>
-    {% endif %} -->
-    <table class="manager">
-         <!-- for loop for employee table grouped by manager_id -->
-         <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Time_in</th>
-            <th>Time_out</th>
-            <th>Total hours</th>
-        </tr>
-        {% for session in data %}
-        <tr>
-            <td>{{session.name}}</td>
-            <td>{{session.date}}</td>
-            <td>{{session.time_in}}</td>
-            <td>{{session.time_out}}</td>
-            <td>{{session.total_hours}}</td>
-        </tr>
-    </table>
-    <!-- end of for loop -->
+   <h1>{{ data.manager_name }}</h1>
+   <h3>{{ data.department }}</h3>
+
+    <div class='employees'>
+        {% for employee in data['employee'] %}
+            <button id="{{employee['employee_id']}}" onclick="get_session(this)">{{ employee['name'] }}</button>
+        {% endfor %}
+    </div>
+    <div class='sessions'>
+
+    </div>
+    <script src="{{url_for('static',filename='script.js')}}"></script>
     <a id ='import' herf="">Import</a>
     <a id='export' herf=''>Export</a>
     <a id='setting' herf=''>Settings</a>
