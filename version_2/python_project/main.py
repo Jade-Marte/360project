@@ -1,5 +1,5 @@
 from sqlite3.dbapi2 import Cursor
-from flask import Flask, request, render_template, session, redirect,url_for
+from flask import Flask, request, render_template, session, redirect, sessions,url_for
 import mysql.connector
 import json
 app = Flask(__name__)
@@ -97,7 +97,13 @@ def get_employees():
 @app.route('/sessions/<employee_id>')
 def get_sessions(employee_id):
     session_data = querydb(f"select * from sessions where employee_id = {employee_id}")
+    for session in session_data:
+        session['date'] = session['date'].strftime('%Y/%m/%d')
+        # future improvement have time be am/pm
+        session['time_in'] = str(session['time_in'])
+        session['time_out'] = str(session['time_out'])
     return json.dumps(session_data)
+
 
 # get the indivdual manager from employee_data
 def get_manager(employee_data):

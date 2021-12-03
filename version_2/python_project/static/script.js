@@ -15,7 +15,7 @@
 
 function get_session(button){
 	let id = button.id
-	fetch('/session/'+ id).then(function (response) {
+	fetch('/sessions/'+ id).then(function (response) {
 		// The API call was successful!
 		return response.json();
 	}).then(function (data) {
