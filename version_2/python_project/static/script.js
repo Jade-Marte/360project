@@ -25,4 +25,9 @@ function get_session(button){
 		// There was an error
 		console.warn('Something went wrong.', err);
 	});
+	
+}
+
+function display_data(session_data){
+	
 }
