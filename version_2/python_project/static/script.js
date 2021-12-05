@@ -50,6 +50,7 @@ function display_timesheet(){
 	// starting from today backtrack two weeks for timesheet
 	let current_date = new Date()
 	let days = new Date()
+	let today = current_date.toDateString()
 	for(let i = 1; i < 14; i ++){
 		days = current_date.setDate(current_date.getDate() - 1)
 		let dates = new Date(days).toDateString()
@@ -62,6 +63,14 @@ function display_timesheet(){
 		`
 		table.appendChild(row)
 	}
+	let input = document.getElementById('timesheet')
+	let submit = document.createElement('tr')
+	submit.innerHTML = `
+		<input type="submit" value="+" id='add'>
+	`
+	input.appendChild(submit)
+	
+
 	
 
 }

@@ -5,18 +5,13 @@
 {% endblock %}
 
 {% block body %}
-    <!-- {% if data %}
-        <h1>{{ data['name'] }}</h1>
-    {% else %}
-        <h1> Hello, World</h1>
-    {% endif %} -->
     <div class="content">
         <form action='/home' method="POST">
             <label for='username'>Username:</label>
-            <input type='text' name="username" id='username'>
+            <input type='text' name="username" id='username' required>
             <br>
             <label for='password'>Password:</label>
-            <input type='password' name='password' id='password'>
+            <input type='password' name='password' id='password'required>
             <br>
             <input type='submit' value='Login'>
         </form>

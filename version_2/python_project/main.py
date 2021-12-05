@@ -53,14 +53,11 @@ def Signup():
         name = request.form['name']
         username = request.form['username']
         password = request.form['password']
-        print(password, "this is the password")
         type = request.form['type']
         manager_id = request.form['manager_id']
         pay = request.form['pay_rate']
         department = request.form['department']
         # future inprovment have the manager make the account only
-        print(f"""insert into employee
-                                values(NULL,{username},{password},{manager_id},{type},{name},{department},{pay})""")
         mycursor.execute(f"""insert into employee
                                 values(NULL,'{username}','{password}','{manager_id}','{type}','{name}','{department}','{pay}')""")
         mydb.commit()   
@@ -75,7 +72,11 @@ def Signup():
 def employee():
     employee_id = session['user_id']
     data = querydb(f"select * from sessions where employee_id = {employee_id}")
-    # print(data)
+    if request.method == "POST":
+        time_in = request.form['time_in']
+        time_out = request.form['time_out']
+        print("form in javascript works")
+
     return render_template('employee.html',data=data)
 
 
