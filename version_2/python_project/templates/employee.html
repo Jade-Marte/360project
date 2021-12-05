@@ -30,9 +30,27 @@
     {% endfor %}
     </table>
     <!-- end of for loop -->
-    <a id ='import' herf="">Import</a>
+    <button id ='import' onclick='display_timesheet()'>Insert timesheet</button>
+    <div class="input_time">
+        <table>
+            <thead>
+                <input type="submit" value="+" id="submit">
+                <tr>
+                    <th>Date</th>
+                    <th>Time_in</th>
+                    <th>Time_out</th>
+                </tr>
+            </thead>
+            <tbody id='timesheet'>
+                
+            </tbody>
+           
+        </table>
+        
+    </div>
     <br>
     <a id='export' herf=''>Export</a>
     <br>
     <a id='setting' herf=''>Settings</a>
+    <script src="{{url_for('static',filename='script.js')}}"></script>
 {% endblock %}

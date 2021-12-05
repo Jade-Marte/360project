@@ -47,21 +47,25 @@ def test():
 
 
 @app.route('/Signup',methods=("POST","GET"))
-def Signin():
+def Signup():
     print('checking')
     if request.method == 'POST':
         name = request.form['name']
         username = request.form['username']
         password = request.form['password']
+        print(password, "this is the password")
         type = request.form['type']
+        manager_id = request.form['manager_id']
         pay = request.form['pay_rate']
         department = request.form['department']
-
-        mycursor.excute("""insert into employee"
-                    "values (%s,%s,%s,%s,%s,%s,%s,%s)""", 
-                    None,username,password,None,type,name,department,pay)
-        mycursor.commit()   
+        # future inprovment have the manager make the account only
+        print(f"""insert into employee
+                                values(NULL,{username},{password},{manager_id},{type},{name},{department},{pay})""")
+        mycursor.execute(f"""insert into employee
+                                values(NULL,'{username}','{password}','{manager_id}','{type}','{name}','{department}','{pay}')""")
+        mydb.commit()   
         print('inserted')
+        return redirect('./home')
     # return render_template('signin.html',users = users)
     return render_template('signup.html')
 

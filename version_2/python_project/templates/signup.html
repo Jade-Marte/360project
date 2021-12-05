@@ -7,7 +7,7 @@
 
 {% block body %}
     <a id ='back'href="./home">Log In</a>
-    <form action='/Signup'methods='POST'>
+    <form action='./Signup' method='POST'>
         <label for='name'>Enter Name</label>
         <input name='name' id='name' type='text'>
         <br>
@@ -15,16 +15,19 @@
         <input name="username" id = 'username' type='text'>
         <br>
         <label for='password'>Create password</label>
-        <input name='password' id='password' type='text'>
+        <input name='password' id='password' type='password'>
         <br>
         <label for='confirm'>Re-enter password</label>
-        <input name='confirm' type='text' id='confirm'>
+        <input name='confirm' type='password' id='confirm'>
         <br>
         <label for='type'>Employee or Manager</label>
         <select id='type' name='type'>
             <option value='employee'>Employee</option>
             <option value='manager'>Manager</option>
         </select>
+        <br>
+        <label for= 'manager_id'> Enter Manger ID</label>
+        <input name='manager_id' type='text' id='manager_id'>
         <br>
         <label for='department'>Company Deparment</label>
         <input name='department' id='department' type='text'>
