@@ -30,6 +30,7 @@
     {% endfor %}
     </table>
     <!-- end of for loop -->
+    <!-- don't allow  -->
     <button id ='import' onclick='display_timesheet()'>Insert timesheet</button>
     <div class="input_time">
         <table>
@@ -43,12 +44,15 @@
             </thead>
             <tbody id='timesheet'>
             </tbody>
+            
            
         </table>
-        
+        <button id="submit" onclick="submit_timesheet()">Submit</button>
     </div>
     <br>
     <br>
     <a id='setting' herf=''>Settings</a>
+    <br>
+    <a id='logout' href="./home">Log Out</a>
     <script src="{{url_for('static',filename='script.js')}}"></script>
 {% endblock %}

@@ -1,4 +1,5 @@
 from sqlite3.dbapi2 import Cursor
+from datetime import datetime
 from flask import Flask, request, render_template, session, redirect, sessions,url_for
 import mysql.connector
 import json
@@ -58,10 +59,7 @@ def Signup():
         pay = request.form['pay_rate']
         department = request.form['department']
         # future inprovment have the manager make the account only
-        mycursor.execute(f"""insert into employee
-                                values(NULL,'{username}','{password}','{manager_id}','{type}','{name}','{department}','{pay}')""")
-        mydb.commit()   
-        print('inserted')
+        insertdb(f"""insert into employee values(NULL,'{username}','{password}','{manager_id}','{type}','{name}','{department}','{pay}')""") 
         return redirect('./home')
     # return render_template('signin.html',users = users)
     return render_template('signup.html')
@@ -116,7 +114,23 @@ def get_manager(employee_data):
         if employee['type'] == 'manager':
             return employee
 
-    
+@app.route('/uploadTimesheet', methods=["POST"])
+def insert_sessions():
+    employee_id = session['user_id']
+    if request.method == "POST":
+        data = request.get_json(force=True)
+        for sessions in data:
+            date = sessions['date']
+            tIn = sessions['time_in']
+            tOut = sessions['time_out']
+            FMT = '%H:%M:%S'
+            tdelta = datetime.strptime(tOut, FMT) - datetime.strptime(tIn, FMT)
+            total_hours = tdelta.total_seconds()/3600
+            insertdb(f"insert into sessions values(NULL,{employee_id},'{date}','{tIn}','{tOut}',{total_hours})")
+    return "success"
+def insertdb(sql):
+    mycursor.execute(sql)
+    mydb.commit()
 def querydb(sql):
     mycursor.execute(sql)
     r = [dict((mycursor.description[i][0], value) \

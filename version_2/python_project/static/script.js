@@ -51,10 +51,11 @@ function display_timesheet(){
 	let current_date = new Date()
 	let days = new Date()
 	let today = current_date.toDateString()
+	let table = document.getElementById('timesheet')
+	if (table.children.length != 0) return 
 	for(let i = 1; i < 14; i ++){
 		days = current_date.setDate(current_date.getDate() - 1)
 		let dates = new Date(days).toDateString()
-		let table = document.getElementById('timesheet')
 		let row = document.createElement('tr')
 		row.innerHTML = `
 			<td>${dates}</td>
@@ -63,15 +64,30 @@ function display_timesheet(){
 		`
 		table.appendChild(row)
 	}
-	let input = document.getElementById('timesheet')
-	let submit = document.createElement('tr')
-	submit.innerHTML = `
-		<input type="submit" value="+" id='add'>
-	`
-	input.appendChild(submit)
 	
-
-	
-
 }
+
+async function submit_timesheet(){
+	let timesheet = []
+	let tBody = document.getElementById('timesheet')
+	for(let i = 0; i < tBody.children.length; i ++){
+		let tr = tBody.children[i]
+		let date = tr.children[0].innerText
+		date = new Date(date)
+		let timeIn = tr.children[1].firstChild.value
+		let timeOut = tr.children[2].firstChild.value
+		if(timeIn != '' && timeOut != '')
+		timesheet.push({'date':date.toISOString().split('T')[0],'time_in':timeIn + ":00",'time_out':timeOut + ":00"})
+	}
+	const response = await fetch("./uploadTimesheet", {
+	method: 'POST',
+		body: JSON.stringify(timesheet)
+		});
+
+	response.json().then(data => {
+	console.log(data);
+	});  
+	}
+
+
 
