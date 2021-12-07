@@ -1,12 +1,7 @@
-.employee{
-    border: 2px black solid;
+.container{
+    background-color: lightgreen;
+    margin-top: 100px;
 }
-
-.employee td{
-    border: 1px black solid;
-    font-size: 14px;
+a{
+    color:white
 }
-
-/* .employee th{
-    font-size: ;
-} */

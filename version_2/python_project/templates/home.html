@@ -1,23 +1,44 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>Log In</h1>
+<div class="container">
+    
+    <div class="card-panel #00bfa5 teal accent-4">
+        <h3 class="center-align white-text text-darken-2">Log In</h1>
+        <div class='divider'></div>
 {% endblock %}
 
 {% block body %}
-    <div class="content">
-        <form action='/home' method="POST">
-            <label for='username'>Username:</label>
-            <input type='text' name="username" id='username' required>
-            <br>
-            <label for='password'>Password:</label>
-            <input type='password' name='password' id='password'required>
-            <br>
-            <input type='submit' value='Login'>
+    <div class='row'>
+        <form action='/home' method="POST" class="col s12">
+            <div class="row">
+                    <div class="input-field col s12">
+                            <input placeholder = "Username"type='text' name="username" id='username' required>
+                            <!-- <label for='user_name'>Username</label> -->
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder = "Password "type='password' name='password' id='password'required>
+                        <!-- <label for='password'>Password</label> -->
+                    <div>
+            </div>
+    
+        <div class="divider"></div>
+        <div class="section center-align">
+            <input class="btn waves-effect waves-light " type='submit' value='Login'>
+            
         </form>
-        <a id ="signup" href="./Signup"> Sign Up</a>
+        <div class="btn waves-effect waves-light">
+            <a id ="signup" href="./Signup"> Sign Up</a>
+            </div>
+    </div>
+    </div>
+    
+        
         <a id = "fp" href=""> Forgot password</a>
         <a id = "fu" href=""> Forgot username</a>
     </div>
+</div>
     <script src="{{url_for('static',filename='script.js')}}"></script>
 {% endblock %}
