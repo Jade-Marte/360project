@@ -1,7 +1,9 @@
 .container{
-    background-color: lightgreen;
     margin-top: 100px;
 }
 a{
     color:white
+}
+input{
+    color:white;
 }

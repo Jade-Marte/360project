@@ -30,11 +30,8 @@ def home():
             session['user_id'] = user['employee_id']
             session['manager_id'] = user['manager_id']
             if user['type'] == 'employee':
-                print('employee logged in')
-                print(user['employee_id'])
                 return redirect('/employee')
             else:
-                print('manager logged in')
                 return redirect('/manager')
     
     return render_template('home.html', users=users)
@@ -73,7 +70,6 @@ def employee():
     if request.method == "POST":
         time_in = request.form['time_in']
         time_out = request.form['time_out']
-        print("form in javascript works")
 
     return render_template('employee.html',data=data)
 
