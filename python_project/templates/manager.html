@@ -7,19 +7,34 @@
 {% endblock %}
 
 {% block body %}
-   <h1>{{ data.manager_name }}</h1>
-   <h3>{{ data.department }}</h3>
+<nav class="#00bfa5 teal accent-4">
+    <div class="nav-wrapper">
+        <a href="#"class="brand-logo center">{{ data.manager_name }}</a>
+            <ul class="left hide-on-med-and-down">
+                <li><a id='logout' href="./home">Log out</a></li>
+        <!-- imprpovement to be able to import csv or exel files into table  -->
+                <li><a id ='import' herf="">Import</a></li>
+        <!-- improvement to have the timesheet be converted to pdf or csv -->
+                <li><a id='export' herf=''>Export</a></li>
+                <li><a id='setting' herf=''>Settings</a></li>
+            </ul>
+    </div>
+    </nav>
+<div class="container">
+    
+
+    <div class="divider"></div>
+    <div class="selection">
+        <h3>{{ data.department }}</h3>
+    </div>
 
     <div class='employees'>
         {% for employee in data['employee'] %}
-            <button id="{{employee['employee_id']}}" onclick="get_session(this)">{{ employee['name'] }}</button>
+            <button class = "waves-effect waves-light btn-small"id="{{employee['employee_id']}}" onclick="get_session(this)">{{ employee['name'] }}</button>
         {% endfor %}
     </div>
-    <div class='sessions'>
-
-    </div>
     <div class='session'>
-        <table>
+        <table class="highlight">
             <thead>
                 <tr>
                     <th>Date</th>
@@ -29,18 +44,13 @@
                 </tr>
             </thead>
             <tbody id = 'sessions'>
-                <!-- how to insert data from javascript? into html table-->
+                <!-- improve to have the employee data open seperately-->
             </tbody>
         </table>
     </div>
     <script src="{{url_for('static',filename='script.js')}}"></script>\
-    <br>
-    <a id='logout' href="./home">Log out</a>
-    <!-- imprpovement to be able to import csv or exel files into table  -->
-    <a id ='import' herf="">Import</a>
-    <!-- improvement to have the timesheet be converted to pdf or csv -->
-    <a id='export' herf=''>Export</a>
-    <a id='setting' herf=''>Settings</a>
+    
+</div>
 
 
 {% endblock %}

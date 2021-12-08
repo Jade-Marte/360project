@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>Paystub</h1>
+       
     <link rel='stylesheet' href="{{url_for('static',filename='style.css')}}">
 {% endblock %}
 {% block body %}
-     <!-- {% if data %}
-        <h1>{{ data['name'] }}</h1>
-    {% else %}
-        <h1> Hello, Employee</h1>
-    {% endif %} -->
-    <table class='employee'>
+   <nav class="#00bfa5 teal accent-4">
+            <div class="nav-wrapper">
+                <a href="#" class= "brand-logo center">Paystub</a>
+                <ul class="left hide-on-med-and-down">
+                    <li><a id='setting' herf=''>Settings</a></li>
+                    <li><a id='logout' href="./home">Log Out</a></li>
+                </ul>
+            </div>
+    </nav>
+    <div class="container"> 
+    <table id='employee' class="highlight">
         <!-- for loop to loop through the employee table 
                 joined be the sessions table-->
         
@@ -31,9 +36,9 @@
     </table>
     <!-- end of for loop -->
     <!-- don't allow  -->
-    <button id ='import' onclick='display_timesheet()'>Insert timesheet</button>
-    <div class="input_time">
-        <table>
+    <div id="input_time">
+    <button class="waves-effect waves-light btn"id ='import' onclick='display_timesheet()'>Insert timesheet</button>
+        <table id = "input_time" class="highlight">
             <thead>
                 
                 <tr>
@@ -47,12 +52,17 @@
             
            
         </table>
-        <button id="submit" onclick="submit_timesheet()">Submit</button>
+        <button class="btn waves-effect waves-light" id="submit">Submit
+            <i class="material-icons right">send</i>
+          </button>
     </div>
-    <br>
-    <br>
-    <a id='setting' herf=''>Settings</a>
-    <br>
-    <a id='logout' href="./home">Log Out</a>
+    
+</div>
+    <script>
+        document.getElementById('submit').addEventListener('click',function(){
+            let td = document.getElementById('input_time')
+            td.style.display = "none"
+        })
+    </script>
     <script src="{{url_for('static',filename='script.js')}}"></script>
 {% endblock %}

@@ -1,4 +1,4 @@
-.container{
+#login{
     margin-top: 100px;
 }
 a{
@@ -6,4 +6,13 @@ a{
 }
 input{
     color:white;
+}
+#time_in{
+    color:black;
+}
+#time_out{
+    color:black;
+}
+th{
+    color:black;
 }

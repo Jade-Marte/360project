@@ -65,6 +65,7 @@ def Signup():
 
 @app.route('/employee')
 def employee():
+    #improvment have employee name added to the paystub
     employee_id = session['user_id']
     data = querydb(f"select * from sessions where employee_id = {employee_id}")
     if request.method == "POST":
